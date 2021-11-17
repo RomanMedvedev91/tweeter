@@ -6,12 +6,9 @@
 
 textarea {
   border: none;
-}
-
-.labal_textarea{
-  margin-bottom: 25px;
-  padding-bottom: 15px;
+  background-color: #f4f1ec;
   border-bottom: 4px solid;
+  height: 2em;
 }
 
 
@@ -38,4 +35,8 @@ flex-direction: column;
 .counter {
   font-family: 'Bungee', cursive, sans-serif;
 
+}
+
+.counter-red {
+  color: #ff0000;
 }
