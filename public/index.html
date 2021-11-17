@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/user_tweets.css" type="text/css" />
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -44,15 +45,15 @@
 
   </nav>
 
-  <header>
+  <header id="header">
     <div id="avatar">
-        <img src="/images/profile-hex.png"> 
+      <img src="/images/profile-hex.png">
     </div>
     <br>
     <div>
-        <h2>Your Name</h2>
+      <h2>Your Name</h2>
     </div>
-</header>
+  </header>
 
   <!-- Page-specific (main) content here -->
   <main class="container">
@@ -68,10 +69,44 @@
       </form>
     </section>
 
-    <article class="tweet">
-      
+    <article class="user_tweet">
+      <header class="user_tweet-header">
+        <div class="user_avatar">
+          <img class="user_avatar-photo" src="/images/profile-hex.png" alt="img">
+          <span class="user_name">Newton</span>
+        </div>
+        <div class="user_tagname">
+          <span>@Sirlsaac</span>
+        </div>
+      </header>
+
+      <div class="user_tweet-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae elit augue. Cras tempor nisl at arcu
+          euismod</p>
+      </div>
+
+
+      <footer class="user_tweet-footer">
+        <div class="date_left">
+          <p class="data_left-text"><span class="date_left-number">10</span> days ago</p>
+        </div>
+
+        <div class="user_tweet_icons">
+          <i class="fas fa-flag tweet_icon"></i>
+          <i class="fas fa-retweet tweet_icon"></i>
+          <i class="fas fa-heart tweet_icon"></i>
+        </div>
+      </footer>
     </article>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae elit augue. Cras tempor nisl at arcu euismod, quis maximus quam auctor. Fusce augue lacus, rhoncus non eleifend vitae, iaculis ut felis. Phasellus finibus lectus quis tincidunt consequat. Maecenas porttitor in metus vitae pretium. Donec sed ante iaculis, dictum est sed, placerat tortor. Nullam rhoncus libero lacus, a malesuada eros vestibulum sed. Praesent luctus tellus eget ligula faucibus varius vitae vitae neque. Pellentesque in venenatis leo, sit amet tempor sapien. Suspendisse feugiat sollicitudin quam, fermentum hendrerit nisl fringilla eu. Vestibulum non tempor libero, vitae laoreet arcu. Phasellus quis facilisis felis, a maximus ligula. Praesent fringilla lectus accumsan augue cursus, ut bibendum augue pretium. Praesent ex nibh, porttitor a aliquet eu, accumsan nec nunc. Suspendisse venenatis erat rhoncus malesuada tempus. Donec faucibus urna eget dolor varius, eu ultricies leo dignissim.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae elit augue. Cras tempor nisl at arcu euismod,
+    quis maximus quam auctor. Fusce augue lacus, rhoncus non eleifend vitae, iaculis ut felis. Phasellus finibus lectus
+    quis tincidunt consequat. Maecenas porttitor in metus vitae pretium. Donec sed ante iaculis, dictum est sed,
+    placerat tortor. Nullam rhoncus libero lacus, a malesuada eros vestibulum sed. Praesent luctus tellus eget ligula
+    faucibus varius vitae vitae neque. Pellentesque in venenatis leo, sit amet tempor sapien. Suspendisse feugiat
+    sollicitudin quam, fermentum hendrerit nisl fringilla eu. Vestibulum non tempor libero, vitae laoreet arcu.
+    Phasellus quis facilisis felis, a maximus ligula. Praesent fringilla lectus accumsan augue cursus, ut bibendum augue
+    pretium. Praesent ex nibh, porttitor a aliquet eu, accumsan nec nunc. Suspendisse venenatis erat rhoncus malesuada
+    tempus. Donec faucibus urna eget dolor varius, eu ultricies leo dignissim.
   </main>
 </body>
 
