@@ -58,12 +58,31 @@ $(document).ready(function () {
   $("form").on("submit", function (event) {
     event.preventDefault();
     const $output = $(this).children("#tweet-text").val();
+    const $labal = $(this).children(".labal_textarea");
+    // const tempString = $labal.text();
+    const error = "<p class='error_message'>Error: value is empty</p>";
     if (!$output) {
-      return alert("Value is empty");
+      // $(this).prepend(error);
+      // $(this).first().slideDown(1000);
+
+      $labal.text("Error: value is empty");
+      $labal.addClass("error_message");
+      return;
+      // return alert("Value is empty");
     }
     if ($output.length > 140) {
-      return alert("You exeed message limit");
+      // $(this).prepend(error);
+      // $(this).first().slideDown("slow");
+      $labal.text("Error: You exceed message limit");
+      $labal.addClass("error_message");
+      return;
     }
+    // $(this).children(".error_message").hide();
+    if ($labal.text() !== "What are you humming about?") {
+      $labal.text("What are you humming about?");
+      $labal.removeClass("error_message");
+    }
+
     $.ajax({
       url: "/tweets",
       method: "POST",
