@@ -49,9 +49,13 @@ $(document).ready(function () {
 
   $("form").on("submit", function (event) {
     event.preventDefault();
-    console.log("the default event result has been prevented");
-    console.log($(this).serialize());
-
+    const $output = $(this).children("#tweet-text").val();
+    if (!$output) {
+      return alert("Value is empty");
+    }
+    if ($output.length > 140) {
+      return alert("You exeed message limit");
+    }
     $.ajax({
       url: "/tweets",
       method: "POST",
