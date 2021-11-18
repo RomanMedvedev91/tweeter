@@ -43,7 +43,7 @@ $(document).ready(function () {
   const renderTweets = function (tweets) {
     for (let tweet of tweets) {
       //append each tweet to tweet container in html page
-      $(".container").append(createTweetElement(tweet));
+      $("#tweet_container").prepend(createTweetElement(tweet));
     }
   };
 
@@ -60,6 +60,9 @@ $(document).ready(function () {
       url: "/tweets",
       method: "POST",
       data: $(this).serialize(),
+    }).then((result) => {
+      loadTweets();
+      // renderTweets(result);
     });
   });
 
