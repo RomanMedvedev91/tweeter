@@ -4,8 +4,15 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
+  const escape = function (str) {
+    let p = document.createElement("p");
+    p.appendChild(document.createTextNode(str));
+    return p.innerHTML;
+  };
+
   const createTweetElement = function (obj) {
     const { user, content, created_at } = obj;
+
     const $tweet = $(`
     <article class="user_tweet">
         <header class="user_tweet-header">
@@ -19,7 +26,7 @@ $(document).ready(function () {
         </header>
   
         <div class="user_tweet-content">
-          <p>${content.text}</p>
+        ${escape(content.text)}
         </div>
   
         <footer class="user_tweet-footer">
@@ -37,6 +44,7 @@ $(document).ready(function () {
         </footer>
       </article>
     `);
+
     return $tweet;
   };
 
@@ -61,8 +69,8 @@ $(document).ready(function () {
       method: "POST",
       data: $(this).serialize(),
     }).then((result) => {
+      $("textarea").val("");
       loadTweets();
-      // renderTweets(result);
     });
   });
 
