@@ -59,25 +59,25 @@ $(document).ready(function () {
     event.preventDefault();
     const $output = $(this).children("#tweet-text").val();
     const $labal = $(this).children(".labal_textarea");
-    // const tempString = $labal.text();
-    const error = "<p class='error_message'>Error: value is empty</p>";
-    if (!$output) {
-      // $(this).prepend(error);
-      // $(this).first().slideDown(1000);
+    const errorEmptyValue =
+      "<p class='error_message'>Error: value is empty</p>";
+    const errorExceedValue =
+      "<p class='error_message'>Error: You exceed message limit</p>";
+    //check if error already shown then hide it
+    if ($(this).children(".error_message")) {
+      $(this).children(".error_message").hide("slow");
+    }
 
-      $labal.text("Error: value is empty");
-      $labal.addClass("error_message");
+    if (!$output) {
+      $(this).prepend(errorEmptyValue);
+      $(this).first().hide().slideDown("slow");
       return;
-      // return alert("Value is empty");
     }
     if ($output.length > 140) {
-      // $(this).prepend(error);
-      // $(this).first().slideDown("slow");
-      $labal.text("Error: You exceed message limit");
-      $labal.addClass("error_message");
+      $(this).prepend(errorExceedValue);
+      $(this).first().hide().slideDown("slow");
       return;
     }
-    // $(this).children(".error_message").hide();
     if ($labal.text() !== "What are you humming about?") {
       $labal.text("What are you humming about?");
       $labal.removeClass("error_message");
@@ -89,7 +89,11 @@ $(document).ready(function () {
       data: $(this).serialize(),
     }).then((result) => {
       $("textarea").val("");
-      loadTweets();
+    });
+    $.get("http://localhost:8080/tweets", (data) => {
+      const newTweet = data.slice(-1).pop();
+      const newTweetEl = createTweetElement(newTweet);
+      $("#tweet_container").prepend(newTweetEl);
     });
   });
 
