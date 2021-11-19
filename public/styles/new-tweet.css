@@ -20,7 +20,7 @@ textarea {
 .add_new-tweet {
   display: flex;
   justify-content: space-between;
-  padding-top: 1em;
+  padding-top: 1rem;
 }
 
 .btn_submit_new-tweet {

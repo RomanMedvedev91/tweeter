@@ -1,0 +1,33 @@
+/* Tablet Styles */
+/* @media only screen and (min-width: 768px) {
+  body {
+    font-size: 36px;
+  }
+} */
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+  #avatar {
+    margin-top: 0;
+  }
+
+  #header {
+    height: 100%;
+    width: 40%;
+    justify-content: space-between;
+    margin: 6em 1em;
+    padding: 1em 0;
+  }
+
+  .container {
+    margin-top: 6em;
+  }
+
+  .avatar_name {
+    padding-top: 0.5em;
+    margin: 0;
+  }
+}
