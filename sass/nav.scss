@@ -1,3 +1,5 @@
+$logo-font: "Bungee", cursive, sans-serif;
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -8,20 +10,24 @@ nav {
   padding: 0 1.5em 0 1.5em;
   background-color: #4056a1;
   color: #ffffff;
+
   overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
-}
-nav #logo {
-  font-family: "Bungee", cursive, sans-serif;
-  font-weight: 900;
-}
-nav .new_tweet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-nav .new_tweet_icon {
-  color: red;
+
+  #logo {
+    font-family: $logo-font;
+    font-weight: 900;
+  }
+
+  .new_tweet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .new_tweet_icon {
+    color: red;
+  }
 }

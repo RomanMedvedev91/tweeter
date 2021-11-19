@@ -1,6 +1,12 @@
-.new-tweet {
+@mixin align($align: column) {
   display: flex;
-  flex-direction: column;
+  flex-direction: $align;
+}
+$font-body: "Bungee", cursive, sans-serif;
+$error-color: #ff0000;
+
+.new-tweet {
+  @include align;
   align-items: center;
 }
 
@@ -13,13 +19,11 @@ textarea {
 
 .form_new-tweet {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  @include align;
 }
 
 .add_new-tweet {
-  display: flex;
-  flex-direction: row;
+  @include align($align: row);
   justify-content: space-between;
   padding-top: 1rem;
 }
@@ -27,19 +31,19 @@ textarea {
 .btn_submit_new-tweet {
   background-color: #4056a1;
   color: #ffffff;
-  font-family: "Bungee", cursive, sans-serif;
+  font-family: $font-body;
 }
 
 .counter {
-  font-family: "Bungee", cursive, sans-serif;
+  font-family: $font-body;
 }
 
 .counter-red {
-  color: #ff0000;
+  color: $error-color;
 }
 
 .error_message {
-  color: #ff0000;
+  color: $error-color;
   font-weight: 600;
   background-color: yellow;
   font-size: 1.2em;

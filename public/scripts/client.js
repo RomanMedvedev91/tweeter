@@ -83,6 +83,7 @@ $(document).ready(function () {
       $labal.removeClass("error_message");
     }
 
+//send data to data base
     $.ajax({
       url: "/tweets",
       method: "POST",
@@ -90,6 +91,7 @@ $(document).ready(function () {
     }).then((result) => {
       $("textarea").val("");
     });
+//get last added data from data base
     $.get("http://localhost:8080/tweets", (data) => {
       const newTweet = data.slice(-1).pop();
       const newTweetEl = createTweetElement(newTweet);
@@ -97,6 +99,7 @@ $(document).ready(function () {
     });
   });
 
+//attend all users from data base
   const loadTweets = function () {
     $.ajax({
       url: "/tweets",

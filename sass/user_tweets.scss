@@ -3,15 +3,14 @@
   border: 4px solid;
   padding: 0.5em;
 }
-
-.user_tweet:hover {
+.user_tweet:hover{
   box-shadow: 4px 4px #808080;
 }
-
 .user_tweet-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .user_avatar {
@@ -19,7 +18,6 @@
   align-items: center;
   justify-content: space-around;
 }
-
 .user_avatar-photo {
   max-width: 75px;
   margin-right: 0.5em;
@@ -43,5 +41,3 @@
 .tweet_icon:hover {
   color: #ffff50;
 }
-
-/*# sourceMappingURL=user_tweets.css.map */

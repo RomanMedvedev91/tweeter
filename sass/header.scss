@@ -1,4 +1,4 @@
-#header {
+@mixin header() {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -6,6 +6,10 @@
   align-items: center;
   background-color: #009bc2;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+}
+
+#header {
+  @include header;
 }
 
 #avatar {
