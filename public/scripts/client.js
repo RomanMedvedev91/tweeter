@@ -49,7 +49,7 @@ $(document).ready(function () {
   };
 
   const renderTweets = function (tweets) {
-    for (let tweet of tweets) {
+    for (const tweet of tweets) {
       //append each tweet to tweet container in html page
       $("#tweet_container").prepend(createTweetElement(tweet));
     }
@@ -58,7 +58,8 @@ $(document).ready(function () {
   $("form").on("submit", function (event) {
     event.preventDefault();
     const $output = $(this).children("#tweet-text").val();
-    const $labal = $(this).children(".labal_textarea");
+    // const $labal = $(this).children(".labal_textarea");
+
     const errorEmptyValue =
       "<p class='error_message'>Error: value is empty</p>";
     const errorExceedValue =
@@ -78,28 +79,43 @@ $(document).ready(function () {
       $(this).first().hide().slideDown("slow");
       return;
     }
-    if ($labal.text() !== "What are you humming about?") {
-      $labal.text("What are you humming about?");
-      $labal.removeClass("error_message");
-    }
+    // if ($labal.text() !== "What are you humming about?") {
+    //   $labal.text("What are you humming about?");
+    //   $labal.removeClass("error_message");
+    // }
 
-//send data to data base
+    //send data to data base
     $.ajax({
       url: "/tweets",
       method: "POST",
       data: $(this).serialize(),
     }).then((result) => {
       $("textarea").val("");
+      //update number of letters
+      const $countNum = $(this).children().last().children().last();
+      $countNum.val(140);
+
+      $.ajax({
+        url: "/tweets",
+        method: "GET",
+      }).then((data) => {
+        console.log(data);
+        const newTweet = data.pop();
+        console.log(newTweet);
+        $("#tweet_container").prepend(createTweetElement(newTweet));
+      });
     });
-//get last added data from data base
-    $.get("http://localhost:8080/tweets", (data) => {
-      const newTweet = data.slice(-1).pop();
-      const newTweetEl = createTweetElement(newTweet);
-      $("#tweet_container").prepend(newTweetEl);
-    });
+
+    //get last added data from data base
+
+    // $.get("http://localhost:8080/tweets", (data) => {
+    //   const newTweet = data.slice(-1).pop();
+    //   const newTweetEl = createTweetElement(newTweet);
+    //   $("#tweet_container").prepend(newTweetEl);
+    // });
   });
 
-//attend all users from data base
+  //attend all users from data base
   const loadTweets = function () {
     $.ajax({
       url: "/tweets",

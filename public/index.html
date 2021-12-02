@@ -52,7 +52,6 @@
       <span><strong>Write</strong> a new tweet</span>
       <i class="fas fa-angle-double-down new_tweet_icon"></i>
     </div>
-
   </nav>
 
   <header id="header">
@@ -70,8 +69,7 @@
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
       <form class="form_new-tweet" action="/tweets" method="POST">
-        <label class="labal_textarea" for="tweet-text">What are you humming about?</label>
-        <textarea name="text" id="tweet-text"></textarea>
+        <textarea placeholder= 'What are you humming about?' name="text" id="tweet-text"></textarea>
         <div class="add_new-tweet">
           <button class="btn_submit_new-tweet" type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
