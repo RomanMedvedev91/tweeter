@@ -7,6 +7,8 @@ This repository is the starter code for the project: Students will fork and clon
 ## Screenshots
 
 !["GIF of tweeter project"](https://github.com/RomanMedvedev91/tweeter/blob/master/docs/tweet_presentation.gif?raw=true);
+!["Screen#1 of tweeter project"](https://github.com/RomanMedvedev91/tweeter/blob/master/docs/screenshoot1.png?raw=true);
+!["Screen#2 of tweeter project"](https://github.com/RomanMedvedev91/tweeter/blob/master/docs/Screenshot2.png?raw=true);
 
 ## Getting Started
 
