@@ -3,6 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
 $(document).ready(function () {
   const escape = function (str) {
     let p = document.createElement("p");
@@ -47,6 +48,29 @@ $(document).ready(function () {
 
     return $tweet;
   };
+  //error checker func
+  const validateInput = function (tag) {
+    const $output = $(tag).children("#tweet-text").val();
+    const errorEmptyValue =
+      "<p class='error_message'>Error: value is empty</p>";
+    const errorExceedValue =
+      "<p class='error_message'>Error: You exceed message limit</p>";
+    //check if error already shown then hide it
+    if ($(tag).children(".error_message")) {
+      $(tag).children(".error_message").hide("slow");
+    }
+
+    if (!$output) {
+      $(tag).prepend(errorEmptyValue);
+      $(tag).first().hide().slideDown("slow");
+      return true;
+    }
+    if ($output.length > 140) {
+      $(tag).prepend(errorExceedValue);
+      $(tag).first().hide().slideDown("slow");
+      return true;
+    }
+  };
 
   const renderTweets = function (tweets) {
     for (const tweet of tweets) {
@@ -57,62 +81,30 @@ $(document).ready(function () {
 
   $("form").on("submit", function (event) {
     event.preventDefault();
-    const $output = $(this).children("#tweet-text").val();
-    // const $labal = $(this).children(".labal_textarea");
-
-    const errorEmptyValue =
-      "<p class='error_message'>Error: value is empty</p>";
-    const errorExceedValue =
-      "<p class='error_message'>Error: You exceed message limit</p>";
-    //check if error already shown then hide it
-    if ($(this).children(".error_message")) {
-      $(this).children(".error_message").hide("slow");
-    }
-
-    if (!$output) {
-      $(this).prepend(errorEmptyValue);
-      $(this).first().hide().slideDown("slow");
+    //check if error exist => stop submiting
+    if (validateInput(this)) {
       return;
     }
-    if ($output.length > 140) {
-      $(this).prepend(errorExceedValue);
-      $(this).first().hide().slideDown("slow");
-      return;
-    }
-    // if ($labal.text() !== "What are you humming about?") {
-    //   $labal.text("What are you humming about?");
-    //   $labal.removeClass("error_message");
-    // }
-
     //send data to data base
     $.ajax({
       url: "/tweets",
       method: "POST",
       data: $(this).serialize(),
-    }).then((result) => {
+    }).then(() => {
       $("textarea").val("");
       //update number of letters
       const $countNum = $(this).children().last().children().last();
       $countNum.val(140);
 
+      //get last added data from data base
       $.ajax({
         url: "/tweets",
         method: "GET",
       }).then((data) => {
-        console.log(data);
         const newTweet = data.pop();
-        console.log(newTweet);
         $("#tweet_container").prepend(createTweetElement(newTweet));
       });
     });
-
-    //get last added data from data base
-
-    // $.get("http://localhost:8080/tweets", (data) => {
-    //   const newTweet = data.slice(-1).pop();
-    //   const newTweetEl = createTweetElement(newTweet);
-    //   $("#tweet_container").prepend(newTweetEl);
-    // });
   });
 
   //attend all users from data base
@@ -122,6 +114,16 @@ $(document).ready(function () {
       method: "GET",
     }).then((result) => {
       renderTweets(result);
+
+      //add hover style in JS (according to mentor recomendation)
+      $("article").hover(
+        function () {
+          $(this).css("box-shadow", "4px 4px #808080");
+        },
+        function () {
+          $(this).css("box-shadow", "none");
+        }
+      );
     });
   };
   loadTweets();
